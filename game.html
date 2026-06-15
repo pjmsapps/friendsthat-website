@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Friends That Game — Score tracking for your game group</title>
+  <meta name="description" content="Distributed scorekeeper for card and board games. Everyone tracks their own score on their own phone — real-time leaderboard, no more passing the phone around." />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .app-hero {
+      background: var(--green);
+      padding: 5rem 2rem 4rem;
+      text-align: center;
+      color: #fff;
+    }
+    .app-hero .badge-hero {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      color: rgba(255,255,255,0.9);
+      font-size: 11px; font-weight: 500; letter-spacing: 0.3px;
+      padding: 4px 12px; border-radius: 100px;
+      margin-bottom: 1.5rem;
+    }
+    .app-hero .app-icon-large {
+      width: 80px; height: 80px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 20px;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1.5rem;
+    }
+    .app-hero .app-icon-large svg {
+      width: 40px; height: 40px; stroke: #fff; fill: none; stroke-width: 1.4;
+    }
+    .app-hero h1 {
+      font-size: clamp(28px, 5vw, 44px);
+      font-weight: 700; letter-spacing: -1px;
+      margin-bottom: 1rem; color: #fff;
+    }
+    .app-hero p {
+      font-size: 17px; color: rgba(255,255,255,0.8);
+      max-width: 440px; margin: 0 auto;
+      line-height: 1.65;
+    }
+
+    .features-section { padding: 4rem 2rem; max-width: 900px; margin: 0 auto; }
+    .features-section h2 {
+      font-size: 13px; font-weight: 600; letter-spacing: 1.5px;
+      text-transform: uppercase; color: var(--text-subtle);
+      margin-bottom: 2rem;
+    }
+
+    .how-it-works {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 3rem;
+    }
+    .step-card {
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      background: var(--bg);
+    }
+    .step-num {
+      font-size: 12px; font-weight: 700; letter-spacing: 1px;
+      color: var(--green); margin-bottom: 0.75rem;
+      font-variant-numeric: tabular-nums;
+    }
+    .step-card h3 { font-size: 15px; font-weight: 600; margin-bottom: 0.35rem; }
+    .step-card p  { font-size: 13px; color: var(--text-muted); line-height: 1.55; }
+
+    .highlight-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 1px;
+    }
+    .highlight-cell {
+      background: var(--bg);
+      padding: 2rem 1.5rem;
+    }
+    .highlight-cell.accent { background: var(--green-light); }
+    .highlight-cell h3 {
+      font-size: 22px; font-weight: 700; color: var(--green-dark);
+      letter-spacing: -0.5px; margin-bottom: 0.35rem;
+    }
+    .highlight-cell p { font-size: 14px; color: var(--text-muted); line-height: 1.55; }
+
+    .testflight-cta {
+      background: var(--bg-secondary);
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem; text-align: center;
+      margin-top: 3rem;
+    }
+    .testflight-cta h3 { font-size: 18px; font-weight: 600; margin-bottom: 0.5rem; letter-spacing: -0.2px; }
+    .testflight-cta p { font-size: 14px; color: var(--text-muted); margin-bottom: 1.25rem; }
+
+    @media (max-width: 560px) {
+      .highlight-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <div class="nav-logo-mark">
+      <svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="3"/><circle cx="2" cy="4" r="1.5"/><circle cx="14" cy="4" r="1.5"/><circle cx="2" cy="12" r="1.5"/><circle cx="14" cy="12" r="1.5"/><line x1="4" y1="5" x2="6" y2="7"/><line x1="12" y1="5" x2="10" y2="7"/><line x1="4" y1="11" x2="6" y2="9"/><line x1="12" y1="11" x2="10" y2="9"/></svg>
+    </div>
+    <span class="nav-wordmark"><em>Friends That</em></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="travel.html">Travel</a></li>
+    <li><a href="game.html" class="active">Game</a></li>
+    <li><a href="privacy.html">Privacy</a></li>
+  </ul>
+</nav>
+
+<header class="app-hero">
+  <span class="badge-hero">TestFlight Beta</span>
+  <div class="app-icon-large">
+    <svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="3"/><path d="M6 12h4M8 10v4M15 12h.01M18 12h.01"/></svg>
+  </div>
+  <h1>Friends That Game</h1>
+  <p>Distributed scorekeeper for card and board games. Everyone enters their own score — no more passing the phone around.</p>
+</header>
+
+<section class="features-section">
+  <h2>How it works</h2>
+
+  <div class="how-it-works">
+    <div class="step-card">
+      <p class="step-num">01</p>
+      <h3>Host starts a game</h3>
+      <p>Pick from your saved game types or create one on the fly. Set the rules once, reuse them every game night.</p>
+    </div>
+    <div class="step-card">
+      <p class="step-num">02</p>
+      <h3>Everyone joins</h3>
+      <p>Share a 4-letter code or a link. Players join from their own phone — no app required for guests.</p>
+    </div>
+    <div class="step-card">
+      <p class="step-num">03</p>
+      <h3>Each player enters their score</h3>
+      <p>Every player locks in their own score each round. The host sees who's done and can advance when everyone's ready.</p>
+    </div>
+    <div class="step-card">
+      <p class="step-num">04</p>
+      <h3>Live leaderboard</h3>
+      <p>Scores update in real time for everyone. See the Before / This Round / After breakdown each round.</p>
+    </div>
+  </div>
+
+  <h2>Features</h2>
+
+  <div class="feature-grid" style="margin-bottom: 1.25rem;">
+    <div class="feature-item">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24"><path d="M4 6h16M4 10h16M4 14h8"/><rect x="14" y="12" width="8" height="8" rx="1"/><path d="M18 14v4M16 16h4"/></svg>
+      </div>
+      <h3>Game type library</h3>
+      <p>Save your group's favorite games — win direction, end conditions, target scores, round limits. Configure once, play forever.</p>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </div>
+      <h3>Multi-device scoring</h3>
+      <p>Each player has their own score entry screen. The host has an override view for corrections and force-advancing rounds.</p>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+      </div>
+      <h3>Lock In mechanic</h3>
+      <p>Players confirm their score each round. The host sees lock status at a glance — green, amber, or waiting.</p>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg>
+      </div>
+      <h3>Flexible end conditions</h3>
+      <p>Fixed rounds, first to reach a score, bust out at a threshold, or open-ended (host declares the winner). Works for Phase 10, Mexican Train, and more.</p>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/></svg>
+      </div>
+      <h3>Went Out tracking</h3>
+      <p>For games with a zero-score bonus. Auto-detected when one player hits zero — or host is prompted when it's ambiguous.</p>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+      </div>
+      <h3>Share results</h3>
+      <p>End of game sends a clean text summary via the iOS share sheet. Screenshot-free bragging rights.</p>
+    </div>
+  </div>
+
+  <div class="highlight-row">
+    <div class="highlight-cell accent">
+      <h3>Real time</h3>
+      <p>Scores sync instantly across every phone at the table via Firebase.</p>
+    </div>
+    <div class="highlight-cell">
+      <h3>No app needed</h3>
+      <p>Guests can join via link. Only the host needs the app installed.</p>
+    </div>
+  </div>
+
+  <div class="testflight-cta">
+    <h3>Currently in beta</h3>
+    <p>Friends That Game is invite-only while we test with our group. Public launch coming in the future.</p>
+    <a href="mailto:privacy@friendsthat.app" class="btn btn-outline">Get in touch about access</a>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<footer>
+  <span class="footer-brand">Friends That</span>
+  <span class="footer-copy">© 2026 Friends That. All rights reserved.</span>
+  <nav class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="travel.html">Travel</a>
+    <a href="privacy.html">Privacy policy</a>
+    <a href="mailto:privacy@friendsthat.app">Contact</a>
+  </nav>
+</footer>
+
+</body>
+</html>

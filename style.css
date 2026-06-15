@@ -1,0 +1,162 @@
+/* Friends That — brand stylesheet */
+/* Brand green: #266A39 */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --green:        #266A39;
+  --green-dark:   #1A4D28;
+  --green-mid:    #3D8F52;
+  --green-light:  #E6F4EA;
+  --green-border: #B2D9BB;
+  --text:         #1A1A1A;
+  --text-muted:   #5A5A5A;
+  --text-subtle:  #8A8A8A;
+  --bg:           #FFFFFF;
+  --bg-secondary: #F7F7F5;
+  --border:       #E5E5E3;
+  --radius:       12px;
+  --radius-sm:    8px;
+}
+
+html { font-size: 16px; -webkit-font-smoothing: antialiased; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.6;
+}
+
+a { color: var(--green); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── Nav ── */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 0.5px solid var(--border);
+  padding: 0 2rem;
+  height: 56px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+
+.nav-brand {
+  display: flex; align-items: center; gap: 10px;
+  text-decoration: none;
+}
+.nav-logo-mark {
+  width: 28px; height: 28px;
+  background: var(--green);
+  border-radius: 7px;
+  display: flex; align-items: center; justify-content: center;
+}
+.nav-logo-mark svg { width: 16px; height: 16px; fill: none; stroke: #fff; stroke-width: 1.8; }
+.nav-wordmark {
+  font-size: 16px; font-weight: 600; color: var(--text);
+  letter-spacing: -0.2px;
+}
+.nav-wordmark em {
+  font-style: italic; font-weight: 400; color: var(--green);
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.nav-links {
+  display: flex; align-items: center; gap: 1.75rem;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 14px; color: var(--text-muted);
+  text-decoration: none; letter-spacing: -0.1px;
+}
+.nav-links a:hover { color: var(--text); }
+.nav-links a.active { color: var(--green); font-weight: 500; }
+
+/* ── Footer ── */
+footer {
+  border-top: 0.5px solid var(--border);
+  padding: 2rem;
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 1rem;
+  background: var(--bg-secondary);
+}
+.footer-brand {
+  font-family: Georgia, "Times New Roman", serif;
+  font-style: italic; color: var(--green);
+  font-size: 15px; font-weight: 400;
+}
+.footer-copy { font-size: 13px; color: var(--text-subtle); }
+.footer-links { display: flex; gap: 1.5rem; }
+.footer-links a { font-size: 13px; color: var(--text-muted); text-decoration: none; }
+.footer-links a:hover { color: var(--text); }
+
+/* ── Pill badge ── */
+.badge {
+  display: inline-block;
+  font-size: 11px; font-weight: 500;
+  padding: 3px 10px; border-radius: 100px;
+  letter-spacing: 0.2px;
+}
+.badge-green { background: var(--green-light); color: var(--green-dark); border: 0.5px solid var(--green-border); }
+.badge-gray  { background: #F0F0EE; color: var(--text-muted); border: 0.5px solid var(--border); }
+
+/* ── Buttons ── */
+.btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 10px 20px; border-radius: var(--radius-sm);
+  font-size: 15px; font-weight: 500;
+  cursor: pointer; text-decoration: none;
+  transition: opacity 0.15s, transform 0.1s;
+  border: none;
+}
+.btn:hover { opacity: 0.88; transform: translateY(-1px); text-decoration: none; }
+.btn-primary { background: var(--green); color: #fff; }
+.btn-outline { background: transparent; color: var(--green); border: 1.5px solid var(--green); }
+
+/* ── Feature grid ── */
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1px;
+  background: var(--border);
+  border: 0.5px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.feature-item {
+  background: var(--bg);
+  padding: 1.5rem;
+}
+.feature-icon {
+  width: 36px; height: 36px;
+  background: var(--green-light);
+  border-radius: var(--radius-sm);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 0.75rem;
+}
+.feature-icon svg { width: 18px; height: 18px; stroke: var(--green); fill: none; stroke-width: 1.8; }
+.feature-item h3 { font-size: 14px; font-weight: 600; margin-bottom: 0.35rem; }
+.feature-item p  { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
+
+/* ── Section spacing ── */
+.section { padding: 5rem 2rem; max-width: 900px; margin: 0 auto; }
+.section-sm { padding: 3rem 2rem; max-width: 900px; margin: 0 auto; }
+.divider { border: none; border-top: 0.5px solid var(--border); }
+
+/* ── Prose (privacy policy) ── */
+.prose { max-width: 680px; margin: 0 auto; }
+.prose h1 { font-size: 28px; font-weight: 700; margin-bottom: 0.5rem; letter-spacing: -0.4px; }
+.prose h2 { font-size: 18px; font-weight: 600; margin: 2.5rem 0 0.75rem; letter-spacing: -0.2px; }
+.prose p  { font-size: 15px; color: var(--text-muted); margin-bottom: 1rem; line-height: 1.75; }
+.prose ul { padding-left: 1.25rem; margin-bottom: 1rem; }
+.prose ul li { font-size: 15px; color: var(--text-muted); line-height: 1.75; margin-bottom: 0.35rem; }
+.prose a  { color: var(--green); }
+
+@media (max-width: 640px) {
+  nav { padding: 0 1rem; }
+  .nav-links { gap: 1rem; }
+  .section { padding: 3rem 1.25rem; }
+  footer { flex-direction: column; align-items: flex-start; }
+}
