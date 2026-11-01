@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex" />
+  <title>You're Invited — Friends That Travel</title>
+  <meta name="description" content="A friend invited you to Friends That Travel. Get the app and enter your code." />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .invite {
+      max-width: 560px; margin: 0 auto;
+      padding: 3.5rem 1.5rem 4rem;
+    }
+    .invite .eyebrow {
+      font-size: 12px; font-weight: 600; letter-spacing: 1.5px;
+      text-transform: uppercase; color: var(--green);
+      margin-bottom: 0.75rem;
+    }
+    .invite h1 {
+      font-size: clamp(26px, 5vw, 34px);
+      font-weight: 700; letter-spacing: -0.5px;
+      margin-bottom: 0.75rem;
+    }
+    .invite .lead { font-size: 16px; color: var(--text-muted); line-height: 1.7; }
+    .code-box {
+      margin: 2rem 0 1.5rem;
+      padding: 1.5rem;
+      background: var(--green-light);
+      border: 1px solid var(--green-border);
+      border-radius: var(--radius);
+      text-align: center;
+    }
+    .code-box .label { font-size: 13px; color: var(--text-muted); margin-bottom: 0.5rem; }
+    .code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: clamp(30px, 9vw, 40px);
+      font-weight: 700; letter-spacing: 0.35em;
+      color: var(--green-dark);
+      margin-bottom: 1rem;
+      word-break: break-all;
+    }
+    .copied { font-size: 13px; color: var(--green); margin-top: 0.6rem; min-height: 1.2em; }
+    .steps { list-style: none; padding: 0; margin: 2rem 0 0; counter-reset: step; }
+    .steps li {
+      counter-increment: step;
+      position: relative;
+      padding: 0 0 1.25rem 2.75rem;
+      font-size: 15px; color: var(--text-muted); line-height: 1.7;
+    }
+    .steps li::before {
+      content: counter(step);
+      position: absolute; left: 0; top: 0;
+      width: 1.9rem; height: 1.9rem; border-radius: 50%;
+      background: var(--green); color: #fff;
+      font-weight: 600; font-size: 14px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .steps strong { color: var(--text); }
+    .get-app { margin-top: 0.6rem; }
+    .no-code { display: none; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <div class="nav-logo-mark">
+      <svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="3"/><circle cx="2" cy="4" r="1.5"/><circle cx="14" cy="4" r="1.5"/><circle cx="2" cy="12" r="1.5"/><circle cx="14" cy="12" r="1.5"/><line x1="4" y1="5" x2="6" y2="7"/><line x1="12" y1="5" x2="10" y2="7"/><line x1="4" y1="11" x2="6" y2="9"/><line x1="12" y1="11" x2="10" y2="9"/></svg>
+    </div>
+    <span class="nav-wordmark"><em>Friends That</em></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="travel.html">Travel</a></li>
+    <li><a href="game.html">Game</a></li>
+    <li><a href="privacy.html">Privacy</a></li>
+  </ul>
+</nav>
+
+<main class="invite">
+  <p class="eyebrow">Friends That Travel</p>
+  <h1 id="title">You're invited</h1>
+  <p class="lead" id="lead">A friend tagged you in places you've been together. Get the app, and they're offered to you to add to your own travel map.</p>
+
+  <div class="code-box" id="code-box">
+    <div class="label">Your invite code</div>
+    <div class="code" id="code">——————</div>
+    <button class="btn btn-primary" id="copy" type="button">Copy code</button>
+    <div class="copied" id="copied" aria-live="polite"></div>
+  </div>
+
+  <p class="lead no-code" id="no-code">This link is missing its code. Ask the person who invited you to send it again.</p>
+
+  <ol class="steps">
+    <li>
+      <strong>Get Friends That Travel</strong> for iPhone.
+      <div class="get-app" id="get-app">
+        <span id="testing-note">It's in testing on Apple's TestFlight right now — ask <span id="inviter">the person who invited you</span> to add you as a tester, then install it from the TestFlight email.</span>
+      </div>
+    </li>
+    <li><strong>Sign in</strong> with Apple.</li>
+    <li>When it asks <strong>"Got an invite code?"</strong>, enter your code. If you copied it above, it's filled in for you. (Already signed in? Profile → <strong>Enter a Code</strong>.)</li>
+  </ol>
+</main>
+
+<hr class="divider" />
+
+<footer>
+  <span class="footer-brand">Friends That</span>
+  <span class="footer-copy">© 2026 Travel App PMJS LLC. All rights reserved.</span>
+  <nav class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="travel.html">Travel</a>
+    <a href="privacy.html">Privacy</a>
+    <a href="mailto:privacy@friendsthat.app">Contact</a>
+  </nav>
+</footer>
+
+<script>
+  // Set to the TestFlight public link (App Store Connect → TestFlight →
+  // External Testing → Public Link) — or later the App Store link — to show
+  // a download button instead of "ask them to add you as a tester".
+  var DOWNLOAD_URL = '';
+
+  (function () {
+    var params = new URLSearchParams(window.location.search);
+    var code = (params.get('c') || '').toUpperCase();
+    var name = (params.get('n') || '').trim().slice(0, 40);
+    var valid = /^[A-Z0-9]{6}$/.test(code);
+
+    if (name) {
+      document.getElementById('title').textContent = name + ' invited you';
+      document.getElementById('lead').textContent =
+        name + ' tagged you in places you’ve been together. Get the app, and they’re offered to you to add to your own travel map.';
+      document.getElementById('inviter').textContent = name;
+    }
+
+    if (valid) {
+      document.getElementById('code').textContent = code;
+    } else {
+      document.getElementById('code-box').style.display = 'none';
+      document.getElementById('no-code').style.display = 'block';
+    }
+
+    if (DOWNLOAD_URL) {
+      var a = document.createElement('a');
+      a.href = DOWNLOAD_URL;
+      a.className = 'btn btn-primary';
+      a.textContent = 'Get the app';
+      var box = document.getElementById('get-app');
+      box.textContent = '';
+      box.appendChild(a);
+    }
+
+    document.getElementById('copy').addEventListener('click', function () {
+      var done = function () {
+        document.getElementById('copied').textContent = 'Copied — the app fills it in when you sign in.';
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(code).then(done, function () {
+          document.getElementById('copied').textContent = 'Couldn’t copy — write down ' + code + '.';
+        });
+      } else {
+        document.getElementById('copied').textContent = 'Write down ' + code + '.';
+      }
+    });
+  })();
+</script>
+
+</body>
+</html>
